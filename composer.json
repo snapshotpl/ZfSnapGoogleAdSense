@@ -1,0 +1,30 @@
+{
+    "name": "snapshotpl/zf-snap-google-adsense",
+    "description": "Google Adsense view helper for Zend Framework 2",
+    "type": "library",
+    "keywords": [
+        "zf2",
+        "view helper",
+        "google",
+        "google adsense"
+    ],
+    "homepage": "https://github.com/snapshotpl/ZfSnapGoogleAdsense",
+    "authors": [
+        {
+            "name": "Witold Wasiczko",
+            "email": "witold@wasiczko.pl",
+            "homepage": "http://www.psd2html.pl/"
+        }
+    ],
+    "require": {
+        "zendframework/zendframework": "2.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "ZfSnapGoogleAdsense": "src/"
+        },
+        "classmap": [
+            "./Module.php"
+        ]
+    }
+}
