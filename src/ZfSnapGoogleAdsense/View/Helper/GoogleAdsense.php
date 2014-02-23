@@ -83,11 +83,10 @@ class GoogleAdsense extends AbstractHelper
     }
 
     /**
-     * @param string $name
      * @param array $data
      * @return AdUnit
      */
-    protected function adFactory($name, array $data)
+    protected function adFactory(array $data)
     {
         $size = $data['size'];
         if (is_array($size)) {
@@ -98,7 +97,7 @@ class GoogleAdsense extends AbstractHelper
             $width = $size[0];
             $height = $size[1];
         }
-        $ad = new AdUnit($this->id, $data['id'], $name, $width, $height);
+        $ad = new AdUnit($this->id, $data['id'], $data['name'], $width, $height);
 
         return $ad;
     }
@@ -112,7 +111,10 @@ class GoogleAdsense extends AbstractHelper
     {
         if (isset($this->ads[$name])) {
             if (is_array($this->ads[$name])) {
-                $ad = $this->adFactory($name, $this->ads[$name]);
+                if (!isset($this->ads[$name]['name'])) {
+                    $this->ads[$name]['name'] = $name;
+                }
+                $ad = $this->adFactory($this->ads[$name]);
                 $this->ads[$name] = $ad;
             }
             if ($ad instanceof AdUnit) {

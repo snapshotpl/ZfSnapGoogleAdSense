@@ -6,6 +6,7 @@ return array(
             'home-page' => array(
                 'id' => '8065930360',
                 'size' => '320x100',
+                'name' => 'Home page',
             ),
         ),
         'enable' => true,
