@@ -7,12 +7,12 @@ use ZfSnapGoogleAdsense\AdUnit;
 use Zend\View\Helper\AbstractHelper;
 
 /**
- * Description of GoogleAdsense
+ * GoogleAdsense view helper
  *
- * @author witold
+ * @author Witold Wasiczko <witold@wasiczko.pl>
  */
-class GoogleAdsense extends AbstractHelper {
-
+class GoogleAdsense extends AbstractHelper
+{
     const SIZE_DETERMINER = 'x';
 
     private $id;
@@ -20,13 +20,15 @@ class GoogleAdsense extends AbstractHelper {
     private $renderer;
     private $enable = true;
 
-    public function __construct($id, array $ads, RendererInterface $renderer) {
+    public function __construct($id, array $ads, RendererInterface $renderer)
+    {
         $this->id = $id;
         $this->ads = $ads;
         $this->renderer = $renderer;
     }
 
-    public function isEnable() {
+    public function isEnable()
+    {
         return $this->isEnable();
     }
 
@@ -35,7 +37,8 @@ class GoogleAdsense extends AbstractHelper {
         $this->enable = $enable;
     }
 
-    public function __invoke($ad, RendererInterface $renderer = null) {
+    public function __invoke($ad, RendererInterface $renderer = null)
+    {
         if (!$this->isEnable()) {
             return '';
         }
@@ -48,7 +51,8 @@ class GoogleAdsense extends AbstractHelper {
         return $renderer->render($ad);
     }
 
-    protected function adFactory($name, array $data) {
+    protected function adFactory($name, array $data)
+    {
         $size = $data['size'];
         if (is_array($size)) {
             $width = $size['width'];
@@ -63,7 +67,8 @@ class GoogleAdsense extends AbstractHelper {
         return $ad;
     }
 
-    protected function getAd($name) {
+    protected function getAd($name)
+    {
         if (isset($this->ads[$name])) {
             if (is_array($this->ads[$name])) {
                 $ad = $this->adFactory($name, $this->ads[$name]);

@@ -6,14 +6,15 @@ use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
 /**
- * Description of GoogleAdsenseFactory
+ * GoogleAdsense view helper factory
  *
- * @author witold
+ * @author Witold Wasiczko <witold@wasiczko.pl>
  */
-class GoogleAdsenseFactory implements FactoryInterface {
+class GoogleAdsenseFactory implements FactoryInterface
+{
 
-    public function createService(ServiceLocatorInterface $sl) {
-
+    public function createService(ServiceLocatorInterface $sl)
+    {
         $sm = $sl->getServiceLocator();
         $config = $sm->get('config');
         $adsenseConfig = $config['google-adsense'];

@@ -3,18 +3,20 @@
 namespace ZfSnapGoogleAdsense;
 
 /**
- * Description of Ad
+ * AdUnit
  *
- * @author witold
+ * @author Witold Wasiczko <witold@wasiczko.pl>
  */
-class AdUnit {
+class AdUnit
+{
     private $partnerId;
     private $width;
     private $height;
     private $id;
     private $name;
 
-    public function __construct($partnerId, $id, $name, $width, $height) {
+    public function __construct($partnerId, $id, $name, $width, $height)
+    {
         $this->partnerId = $partnerId;
         $this->id = $id;
         $this->name = $name;
@@ -27,19 +29,23 @@ class AdUnit {
         return $this->partnerId;
     }
 
-    public function getWidth() {
+    public function getWidth()
+    {
         return $this->width;
     }
 
-    public function getHeight() {
+    public function getHeight()
+    {
         return $this->height;
     }
 
-    public function getId() {
+    public function getId()
+    {
         return $this->id;
     }
 
-    public function getName() {
+    public function getName()
+    {
         return $this->name;
     }
 

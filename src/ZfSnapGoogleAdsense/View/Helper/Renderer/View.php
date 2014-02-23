@@ -6,9 +6,9 @@ use ZfSnapGoogleAdsense\AdUnit;
 use Zend\View\Renderer\PhpRenderer;
 
 /**
- * Description of AbstractRenderer
+ * View renderer
  *
- * @author witold
+ * @author Witold Wasiczko <witold@wasiczko.pl>
  */
 class View implements RendererInterface
 {
@@ -17,13 +17,15 @@ class View implements RendererInterface
     protected $template;
     protected $partial;
 
-    public function __construct(PhpRenderer $renderer, $template, array $params = array()) {
+    public function __construct(PhpRenderer $renderer, $template, array $params = array())
+    {
         $this->params = $params;
         $this->renderer = $renderer;
         $this->template = $template;
     }
 
-    public function render(AdUnit $ad) {
+    public function render(AdUnit $ad)
+    {
         $partial = $this->getPartial();
 
         return $partial($this->template, array(
@@ -39,4 +41,5 @@ class View implements RendererInterface
         }
         return $this->partial;
     }
+
 }

@@ -6,20 +6,22 @@ use Zend\ServiceManager\AbstractFactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface as ServiceManager;
 
 /**
- * Description of ViewFactory
+ * View renderer factory
  *
- * @author witold
+ * @author Witold Wasiczko <witold@wasiczko.pl>
  */
-class ViewFactory implements AbstractFactoryInterface {
-
+class ViewFactory implements AbstractFactoryInterface
+{
     const PREFIX = 'google-adsense-renderer-';
     const PREFIX_LENGTH = 24;
 
-    public function canCreateServiceWithName(ServiceManager $sm, $name, $requestedName) {
+    public function canCreateServiceWithName(ServiceManager $sm, $name, $requestedName)
+    {
         return substr($requestedName, 0, self::PREFIX_LENGTH) === self::PREFIX;
     }
 
-    public function createServiceWithName(ServiceManager $sm, $name, $requestedName) {
+    public function createServiceWithName(ServiceManager $sm, $name, $requestedName)
+    {
         $config = $sm->get('config');
         $viewRenderer = $sm->get('ViewRenderer');
         $template = $requestedName;

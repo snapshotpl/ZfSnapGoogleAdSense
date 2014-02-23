@@ -1,11 +1,13 @@
 <?php
 
 namespace ZfSnapGoogleAdsense\View\Helper\Renderer;
+
 use ZfSnapGoogleAdsense\AdUnit;
+
 /**
- *
- * @author witold
+ * @author Witold Wasiczko <witold@wasiczko.pl>
  */
-interface RendererInterface {
+interface RendererInterface
+{
     public function render(AdUnit $ad);
 }
