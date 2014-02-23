@@ -12,8 +12,8 @@ use Zend\ServiceManager\ServiceLocatorInterface as ServiceManager;
  */
 class ViewFactory implements AbstractFactoryInterface
 {
-    const PREFIX = 'zf-snap-google-adsense-renderer-';
-    const PREFIX_LENGTH = 32;
+    const PREFIX = 'zf-snap-google-adsense-renderer-view-';
+    const PREFIX_LENGTH = 37;
 
     public function canCreateServiceWithName(ServiceManager $sm, $name, $requestedName)
     {
