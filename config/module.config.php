@@ -1,5 +1,7 @@
 <?php
 
+use \ZfSnapGoogleAdsense\Model\AdUnit;
+
 return array(
     'google-adsense' => array(
         'ads' => array(
@@ -7,11 +9,16 @@ return array(
                 'id' => '8065930360',
                 'size' => '320x100',
                 'name' => 'Home page',
+                'type' => AdUnit::TYPE_CONTENT,
             ),
         ),
         'enable' => true,
-        'id' => 'pub-1348097528006754',
+        'publisher-id' => 'pub-1348097528006754',
         'renderer' => 'google-adsense-renderer-asynchronous',
+        'unit-limit' => array(
+            AdUnit::TYPE_CONTENT => 3,
+            AdUnit::TYPE_LINK => 3,
+        ),
         'renderers' => array(
             'google-adsense-renderer-placeholdit' => array(
                 'params' => array(

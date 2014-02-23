@@ -2,9 +2,10 @@
 
 namespace ZfSnapGoogleAdsense\View\Helper;
 
-use ZfSnapGoogleAdsense\View\Helper\Renderer\RendererInterface;
+use ZfSnapGoogleAdsense\View\Helper\Renderer\RendererInterface as Renderer;
 use ZfSnapGoogleAdsense\Model\AdUnit;
 use Zend\View\Helper\AbstractHelper;
+use Exception;
 
 /**
  * GoogleAdsense view helper
@@ -18,7 +19,7 @@ class GoogleAdsense extends AbstractHelper
     /**
      * @var string
      */
-    private $id;
+    private $publisherId;
 
     /**
      * @var array
@@ -26,7 +27,7 @@ class GoogleAdsense extends AbstractHelper
     private $ads;
 
     /**
-     * @var RendererInterface
+     * @var Renderer
      */
     private $renderer;
 
@@ -36,15 +37,68 @@ class GoogleAdsense extends AbstractHelper
     private $enable = true;
 
     /**
-     * @param string $id
-     * @param array $ads
-     * @param RendererInterface $renderer
+     * Max unit units per page
+     *
+     * @var array
      */
-    public function __construct($id, array $ads, RendererInterface $renderer)
+    private $unitLimits = array();
+
+    /**
+     * @var array
+     */
+    private $unitDisplayed = array();
+
+    /**
+     * @param string $publisherId
+     * @param array $ads
+     * @param Renderer $renderer
+     */
+    public function __construct($publisherId, array $ads, Renderer $renderer)
     {
-        $this->id = $id;
+        $this->publisherId = $publisherId;
         $this->ads = $ads;
         $this->renderer = $renderer;
+    }
+
+    /**
+     * @param string $type
+     * @param int $limit
+     */
+    public function setUnitLimit($type, $limit)
+    {
+        $this->unitLimits[$type] = (int) $limit;
+    }
+
+    /**
+     * @param string $type
+     * @return int
+     */
+    public function getUnitLimit($type)
+    {
+        if (!isset($this->unitLimits[$type])) {
+            $this->setUnitLimit($type, 0);
+        }
+        return $this->unitLimits[$type];
+    }
+
+    /**
+     * @return int
+     */
+    public function getUnitDisplayed($type)
+    {
+        if (!isset($this->unitDisplayed[$type])) {
+            $this->unitDisplayed[$type] = 0;
+        }
+        return $this->unitDisplayed[$type];
+    }
+
+    /**
+     * @param string $type
+     */
+    private function incrementUnitDisplay($type)
+    {
+        $unitDisplayed = $this->getUnitDisplayed($type);
+        $this->unitDisplayed[$type] = ++$unitDisplayed;
     }
 
     /**
@@ -65,10 +119,10 @@ class GoogleAdsense extends AbstractHelper
 
     /**
      * @param string|AdUnit $ad
-     * @param RendererInterface $renderer
+     * @param Renderer $renderer
      * @return string
      */
-    public function __invoke($ad, RendererInterface $renderer = null)
+    public function __invoke($ad, Renderer $renderer = null)
     {
         if (!$this->isEnable()) {
             return '';
@@ -79,6 +133,26 @@ class GoogleAdsense extends AbstractHelper
         if (is_string($ad)) {
             $ad = $this->getAd($ad);
         }
+        return $this->renderAdUnit($ad, $renderer);
+    }
+
+    /**
+     * @param AdUnit $ad
+     * @param Renderer $renderer
+     * @return string
+     * @throws Exception
+     */
+    protected function renderAdUnit(AdUnit $ad, Renderer $renderer)
+    {
+        $type = $ad->getType();
+        $unitLimit = $this->getUnitLimit($type);
+
+        if ($unitLimit > 0 && $unitLimit <= $this->getUnitDisplayed($type)) {
+            $message = sprintf('Exceeded %s unit limit (%d)', $type, $unitLimit);
+            throw new Exception($message);
+        }
+        $this->incrementUnitDisplay($type);
+
         return $renderer->render($ad);
     }
 
@@ -97,8 +171,11 @@ class GoogleAdsense extends AbstractHelper
             $width = $size[0];
             $height = $size[1];
         }
-        $ad = new AdUnit($this->id, $data['id'], $data['name'], $width, $height);
+        $ad = new AdUnit($this->publisherId, $data['id'], $data['name'], $width, $height);
 
+        if (isset($data['type'])) {
+            $ad->setType($data['type']);
+        }
         return $ad;
     }
 
@@ -110,17 +187,20 @@ class GoogleAdsense extends AbstractHelper
     protected function getAd($name)
     {
         if (isset($this->ads[$name])) {
-            if (is_array($this->ads[$name])) {
-                if (!isset($this->ads[$name]['name'])) {
-                    $this->ads[$name]['name'] = $name;
+            $ad = $this->ads[$name];
+            if (is_array($ad)) {
+                if (!isset($ad['name'])) {
+                    $ad['name'] = $name;
                 }
-                $ad = $this->adFactory($this->ads[$name]);
+                $ad = $this->adFactory($ad);
                 $this->ads[$name] = $ad;
             }
             if ($ad instanceof AdUnit) {
                 return $ad;
             }
-            throw new Exception('Incorrect ad');
+            throw new Exception(sprintf('Incorrect ad unit %s', $name));
+        } else {
+            throw new Exception(sprintf('Ad unit %s does not exist', $name));
         }
     }
 

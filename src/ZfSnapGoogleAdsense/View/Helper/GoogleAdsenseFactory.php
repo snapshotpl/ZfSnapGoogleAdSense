@@ -19,15 +19,19 @@ class GoogleAdsenseFactory implements FactoryInterface
         $config = $sm->get('config');
         $adsenseConfig = $config['google-adsense'];
 
-        $id = $adsenseConfig['id'];
+        $publisherId = $adsenseConfig['publisher-id'];
         $ads = $adsenseConfig['ads'];
         $rendererName = $adsenseConfig['renderer'];
         $enable = $adsenseConfig['enable'];
 
         $renderer = $sm->get($rendererName);
 
-        $ga = new GoogleAdsense($id, $ads, $renderer);
+        $ga = new GoogleAdsense($publisherId, $ads, $renderer);
         $ga->setEnable($enable);
+
+        foreach ($adsenseConfig['unit-limit'] as $type => $limit) {
+            $ga->setUnitLimit($type, $limit);
+        }
 
         return $ga;
     }

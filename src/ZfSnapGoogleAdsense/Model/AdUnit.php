@@ -9,10 +9,13 @@ namespace ZfSnapGoogleAdsense\Model;
  */
 class AdUnit
 {
+    const TYPE_CONTENT = 'content';
+    const TYPE_LINK = 'link';
+
     /**
      * @var string
      */
-    private $partnerId;
+    private $publisherId;
 
     /**
      * @var int
@@ -35,15 +38,20 @@ class AdUnit
     private $name;
 
     /**
-     * @param string $partnerId
+     * @var string
+     */
+    private $type = self::TYPE_CONTENT;
+
+    /**
+     * @param string $publisherId
      * @param string $id
      * @param string $name
      * @param int $width
      * @param int $height
      */
-    public function __construct($partnerId, $id, $name, $width, $height)
+    public function __construct($publisherId, $id, $name, $width, $height)
     {
-        $this->partnerId = $partnerId;
+        $this->publisherId = $publisherId;
         $this->id = $id;
         $this->name = $name;
         $this->width = (int) $width;
@@ -51,11 +59,37 @@ class AdUnit
     }
 
     /**
+     * @param string $type
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+    }
+
+    /**
+     * Is type unit?
+     *
+     * @return bool
+     */
+    public function isType($type)
+    {
+        return $this->getType() === $type;
+    }
+
+    /**
      * @return string
      */
-    public function getPartnerId()
+    public function getType()
     {
-        return $this->partnerId;
+        return $this->type;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPublisherId()
+    {
+        return $this->publisherId;
     }
 
     /**
