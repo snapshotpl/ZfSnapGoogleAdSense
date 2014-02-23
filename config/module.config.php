@@ -11,7 +11,7 @@ return array(
         ),
         'enable' => true,
         'id' => 'pub-1348097528006754',
-        'renderer' => 'google-adsense-renderer-placeholdit',
+        'renderer' => 'google-adsense-renderer-asynchronous',
         'renderers' => array(
             'google-adsense-renderer-placeholdit' => array(
                 'params' => array(
