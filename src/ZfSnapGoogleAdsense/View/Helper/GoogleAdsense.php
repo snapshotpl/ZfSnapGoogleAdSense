@@ -15,11 +15,31 @@ class GoogleAdsense extends AbstractHelper
 {
     const SIZE_DETERMINER = 'x';
 
+    /**
+     * @var string
+     */
     private $id;
+
+    /**
+     * @var array
+     */
     private $ads;
+
+    /**
+     * @var RendererInterface
+     */
     private $renderer;
+
+    /**
+     * @var bool
+     */
     private $enable = true;
 
+    /**
+     * @param string $id
+     * @param array $ads
+     * @param RendererInterface $renderer
+     */
     public function __construct($id, array $ads, RendererInterface $renderer)
     {
         $this->id = $id;
@@ -27,16 +47,27 @@ class GoogleAdsense extends AbstractHelper
         $this->renderer = $renderer;
     }
 
+    /**
+     * @return bool
+     */
     public function isEnable()
     {
         return $this->isEnable();
     }
 
+    /**
+     * @param bool $enable
+     */
     public function setEnable($enable)
     {
         $this->enable = $enable;
     }
 
+    /**
+     * @param string|AdUnit $ad
+     * @param RendererInterface $renderer
+     * @return string
+     */
     public function __invoke($ad, RendererInterface $renderer = null)
     {
         if (!$this->isEnable()) {
@@ -51,6 +82,11 @@ class GoogleAdsense extends AbstractHelper
         return $renderer->render($ad);
     }
 
+    /**
+     * @param string $name
+     * @param array $data
+     * @return AdUnit
+     */
     protected function adFactory($name, array $data)
     {
         $size = $data['size'];
@@ -67,6 +103,11 @@ class GoogleAdsense extends AbstractHelper
         return $ad;
     }
 
+    /**
+     * @param string $name
+     * @return AdUnit
+     * @throws Exception
+     */
     protected function getAd($name)
     {
         if (isset($this->ads[$name])) {

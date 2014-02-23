@@ -12,11 +12,32 @@ use Zend\View\Renderer\PhpRenderer;
  */
 class View implements RendererInterface
 {
+    /**
+     * @var array
+     */
     protected $params;
+
+    /**
+     * @var PhpRenderer
+     */
     protected $renderer;
+
+    /**
+     *
+     * @var string
+     */
     protected $template;
+
+    /**
+     * @var \Zend\View\Helper\Partial
+     */
     protected $partial;
 
+    /**
+     * @param PhpRenderer $renderer
+     * @param string $template
+     * @param array $params
+     */
     public function __construct(PhpRenderer $renderer, $template, array $params = array())
     {
         $this->params = $params;
@@ -24,6 +45,10 @@ class View implements RendererInterface
         $this->template = $template;
     }
 
+    /**
+     * @param AdUnit $ad
+     * @return string
+     */
     public function render(AdUnit $ad)
     {
         $partial = $this->getPartial();
@@ -34,6 +59,9 @@ class View implements RendererInterface
         ));
     }
 
+    /**
+     * @return \Zend\View\Helper\Partial
+     */
     protected function getPartial()
     {
         if ($this->partial === null) {
