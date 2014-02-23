@@ -3,7 +3,7 @@
 namespace ZfSnapGoogleAdsense\View\Helper;
 
 use ZfSnapGoogleAdsense\View\Helper\Renderer\RendererInterface;
-use ZfSnapGoogleAdsense\AdUnit;
+use ZfSnapGoogleAdsense\Model\AdUnit;
 use Zend\View\Helper\AbstractHelper;
 
 /**

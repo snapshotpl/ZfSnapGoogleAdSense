@@ -2,7 +2,7 @@
 
 namespace ZfSnapGoogleAdsense\View\Helper\Renderer;
 
-use ZfSnapGoogleAdsense\AdUnit;
+use ZfSnapGoogleAdsense\Model\AdUnit;
 use Zend\View\Renderer\PhpRenderer;
 
 /**
