@@ -11,7 +11,7 @@ use Zend\ModuleManager\Feature\ConfigProviderInterface;
  * @package ZfSnapGoogleAdsense
  * @author  Witold Wasiczko <witold@wasiczko.pl>
  */
-class Module //implements AutoloaderProviderInterface, ConfigProviderInterface
+class Module implements AutoloaderProviderInterface, ConfigProviderInterface
 {
     /**
      * @return array
