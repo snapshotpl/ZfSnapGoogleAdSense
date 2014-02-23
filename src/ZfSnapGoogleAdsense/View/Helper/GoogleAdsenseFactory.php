@@ -17,7 +17,7 @@ class GoogleAdsenseFactory implements FactoryInterface
     {
         $sm = $sl->getServiceLocator();
         $config = $sm->get('config');
-        $adsenseConfig = $config['google-adsense'];
+        $adsenseConfig = $config['zf-snap-google-adsense'];
 
         $publisherId = $adsenseConfig['publisher-id'];
         $ads = $adsenseConfig['ads'];
