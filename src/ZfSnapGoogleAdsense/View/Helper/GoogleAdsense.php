@@ -52,7 +52,7 @@ class GoogleAdsense extends AbstractHelper
      */
     public function isEnable()
     {
-        return $this->isEnable();
+        return $this->enable;
     }
 
     /**
