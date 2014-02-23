@@ -55,6 +55,9 @@ class GoogleAdsense extends AbstractHelper
      */
     public function __construct($publisherId, array $ads, Renderer $renderer)
     {
+        if ($publisherId === null) {
+            throw new Exception('Missing publisher ID');
+        }
         $this->publisherId = $publisherId;
         $this->ads = $ads;
         $this->renderer = $renderer;
@@ -198,9 +201,9 @@ class GoogleAdsense extends AbstractHelper
             if ($ad instanceof AdUnit) {
                 return $ad;
             }
-            throw new Exception(sprintf('Incorrect ad unit %s', $name));
+            throw new Exception(sprintf('Incorrect ad unit "%s"', $name));
         } else {
-            throw new Exception(sprintf('Ad unit %s does not exist', $name));
+            throw new Exception(sprintf('Ad unit "%s" does not exist', $name));
         }
     }
 
