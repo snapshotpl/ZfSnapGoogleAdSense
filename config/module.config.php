@@ -4,16 +4,9 @@ use \ZfSnapGoogleAdsense\Model\AdUnit;
 
 return array(
     'google-adsense' => array(
-        'ads' => array(
-            'home-page' => array(
-                'id' => '8065930360',
-                'size' => '320x100',
-                'name' => 'Home page',
-                'type' => AdUnit::TYPE_CONTENT,
-            ),
-        ),
+        'ads' => array(),
         'enable' => true,
-        'publisher-id' => 'pub-1348097528006754',
+        'publisher-id' => null,
         'renderer' => 'google-adsense-renderer-asynchronous',
         'unit-limit' => array(
             AdUnit::TYPE_CONTENT => 3,
