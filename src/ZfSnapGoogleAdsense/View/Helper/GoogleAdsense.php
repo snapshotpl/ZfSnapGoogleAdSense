@@ -2,10 +2,10 @@
 
 namespace ZfSnapGoogleAdsense\View\Helper;
 
+use ZfSnapGoogleAdsense\Exception;
 use ZfSnapGoogleAdsense\View\Helper\Renderer\RendererInterface as Renderer;
 use ZfSnapGoogleAdsense\Model\AdUnit;
 use Zend\View\Helper\AbstractHelper;
-use Exception;
 
 /**
  * GoogleAdsense view helper
