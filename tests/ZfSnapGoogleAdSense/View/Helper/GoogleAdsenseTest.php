@@ -44,6 +44,16 @@ class GoogleAdsenseTest extends \PHPUnit_Framework_TestCase
                     'width' => 200,
                     'height' => 300,
                 ),
+                'name' => 'custom name',
+                'type' => AdUnit::TYPE_LINK,
+            ),
+            'linktype' => array(
+                'id' => '675849321',
+                'size' => array(
+                    'width' => 100,
+                    'height' => 600,
+                ),
+                'type' => AdUnit::TYPE_LINK,
             ),
         );
     }
@@ -84,7 +94,7 @@ class GoogleAdsenseTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('custom', $ga('simplest', $renderer));
     }
 
-    public function testRendererGetsAds()
+    public function testRendererGetsSimpleAd()
     {
         $renderer = $this->getMock('\ZfSnapGoogleAdSense\View\Helper\Renderer\RendererInterface');
         $renderer->expects($this->any())
@@ -103,6 +113,27 @@ class GoogleAdsenseTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(12334234, $adUnit->getId());
         $this->assertEquals(AdUnit::TYPE_CONTENT, $adUnit->getType());
         $this->assertTrue($adUnit->isType(AdUnit::TYPE_CONTENT));
+    }
+
+    public function testRendererGetsCustomAds()
+    {
+        $renderer = $this->getMock('\ZfSnapGoogleAdSense\View\Helper\Renderer\RendererInterface');
+        $renderer->expects($this->any())
+                ->method('render')
+                ->will($this->returnArgument(0));
+
+        $ga = $this->ga;
+        /* @var $adUnit \ZfSnapGoogleAdSense\Model\AdUnit */
+        $adUnit = $ga('second', $renderer);
+
+        $this->assertInstanceOf('\ZfSnapGoogleAdSense\Model\AdUnit', $adUnit);
+        $this->assertEquals('custom name', $adUnit->getName());
+        $this->assertEquals(200, $adUnit->getWidth());
+        $this->assertEquals(300, $adUnit->getHeight());
+        $this->assertEquals($this->publisherId, $adUnit->getPublisherId());
+        $this->assertEquals(987654321, $adUnit->getId());
+        $this->assertEquals(AdUnit::TYPE_LINK, $adUnit->getType());
+        $this->assertTrue($adUnit->isType(AdUnit::TYPE_LINK));
     }
 
     public function testIsDisplayed()
@@ -130,8 +161,36 @@ class GoogleAdsenseTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals(2, $ga->getUnitDisplayed(AdUnit::TYPE_CONTENT));
 
-        $this->setExpectedException('ZfSnapGoogleAdSense\Exception');
+        $this->setExpectedException('ZfSnapGoogleAdSense\Exception', 'Exceeded content unit limit (2)');
 
         $ga('simplest');
+    }
+
+    public function testDisplayedLimitTwoTypes()
+    {
+        $ga = $this->ga;
+
+        $ga->setUnitLimit(AdUnit::TYPE_CONTENT, 2);
+        $ga->setUnitLimit(AdUnit::TYPE_LINK, 1);
+
+        $ga('simplest');
+        $ga('linktype');
+        $ga('simplest');
+
+        $this->assertEquals(2, $ga->getUnitDisplayed(AdUnit::TYPE_CONTENT));
+        $this->assertEquals(1, $ga->getUnitDisplayed(AdUnit::TYPE_LINK));
+
+        $this->setExpectedException('ZfSnapGoogleAdSense\Exception', 'Exceeded link unit limit (1)');
+
+        $ga('linktype');
+    }
+
+    public function testRenderNotExistsAd()
+    {
+        $ga = $this->ga;
+
+        $this->setExpectedException('ZfSnapGoogleAdSense\Exception', 'Ad unit "foo" does not exist');
+
+        $ga('foo');
     }
 }
