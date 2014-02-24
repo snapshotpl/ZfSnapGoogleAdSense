@@ -21,6 +21,13 @@ return array(
                     'format' => 'gif',
                 ),
             ),
+            'zf-snap-google-adsense-renderer-view-html' => array(
+                'params' => array(
+                    'background' => '#ccc',
+                    'color' => '#969696',
+                    'style' => '',
+                ),
+            ),
         ),
     ),
     'service_manager' => array(
@@ -39,6 +46,7 @@ return array(
     'view_manager' => array(
         'template_map' => array(
             'zf-snap-google-adsense-renderer-view-asynchronous' => __DIR__ . '/../view/zf-snap-google-adsense/renderer/view/asynchronous.phtml',
+            'zf-snap-google-adsense-renderer-view-html'         => __DIR__ . '/../view/zf-snap-google-adsense/renderer/view/html.phtml',
             'zf-snap-google-adsense-renderer-view-placeholdit'  => __DIR__ . '/../view/zf-snap-google-adsense/renderer/view/placeholdit.phtml',
             'zf-snap-google-adsense-renderer-view-synchronous'  => __DIR__ . '/../view/zf-snap-google-adsense/renderer/view/synchronous.phtml',
         ),
