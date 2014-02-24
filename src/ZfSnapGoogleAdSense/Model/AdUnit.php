@@ -1,6 +1,6 @@
 <?php
 
-namespace ZfSnapGoogleAdsense\Model;
+namespace ZfSnapGoogleAdSense\Model;
 
 /**
  * AdUnit

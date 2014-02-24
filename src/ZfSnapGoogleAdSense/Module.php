@@ -1,6 +1,6 @@
 <?php
 
-namespace ZfSnapGoogleAdsense;
+namespace ZfSnapGoogleAdSense;
 
 use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
@@ -8,7 +8,7 @@ use Zend\ModuleManager\Feature\ConfigProviderInterface;
 /**
  * Class Module
  *
- * @package ZfSnapGoogleAdsense
+ * @package ZfSnapGoogleAdSense
  * @author  Witold Wasiczko <witold@wasiczko.pl>
  */
 class Module implements AutoloaderProviderInterface, ConfigProviderInterface

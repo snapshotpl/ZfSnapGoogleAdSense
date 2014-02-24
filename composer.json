@@ -8,7 +8,7 @@
         "google",
         "google adsense"
     ],
-    "homepage": "https://github.com/snapshotpl/ZfSnapGoogleAdsense",
+    "homepage": "https://github.com/snapshotpl/ZfSnapGoogleAdSense",
     "authors": [
         {
             "name": "Witold Wasiczko",
@@ -21,7 +21,7 @@
     },
     "autoload": {
         "psr-0": {
-            "ZfSnapGoogleAdsense": "src/"
+            "ZfSnapGoogleAdSense": "src/"
         },
         "classmap": [
             "./Module.php"

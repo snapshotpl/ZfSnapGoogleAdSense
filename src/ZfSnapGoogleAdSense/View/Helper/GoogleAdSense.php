@@ -1,18 +1,18 @@
 <?php
 
-namespace ZfSnapGoogleAdsense\View\Helper;
+namespace ZfSnapGoogleAdSense\View\Helper;
 
-use ZfSnapGoogleAdsense\Exception;
-use ZfSnapGoogleAdsense\View\Helper\Renderer\RendererInterface as Renderer;
-use ZfSnapGoogleAdsense\Model\AdUnit;
+use ZfSnapGoogleAdSense\Exception;
+use ZfSnapGoogleAdSense\View\Helper\Renderer\RendererInterface as Renderer;
+use ZfSnapGoogleAdSense\Model\AdUnit;
 use Zend\View\Helper\AbstractHelper;
 
 /**
- * GoogleAdsense view helper
+ * GoogleAdSense view helper
  *
  * @author Witold Wasiczko <witold@wasiczko.pl>
  */
-class GoogleAdsense extends AbstractHelper
+class GoogleAdSense extends AbstractHelper
 {
     const SIZE_DETERMINER = 'x';
 

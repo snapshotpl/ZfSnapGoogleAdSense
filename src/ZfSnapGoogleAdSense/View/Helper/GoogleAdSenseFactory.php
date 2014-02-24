@@ -1,16 +1,16 @@
 <?php
 
-namespace ZfSnapGoogleAdsense\View\Helper;
+namespace ZfSnapGoogleAdSense\View\Helper;
 
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
 /**
- * GoogleAdsense view helper factory
+ * GoogleAdSense view helper factory
  *
  * @author Witold Wasiczko <witold@wasiczko.pl>
  */
-class GoogleAdsenseFactory implements FactoryInterface
+class GoogleAdSenseFactory implements FactoryInterface
 {
 
     public function createService(ServiceLocatorInterface $sl)
@@ -26,7 +26,7 @@ class GoogleAdsenseFactory implements FactoryInterface
 
         $renderer = $sm->get($rendererName);
 
-        $ga = new GoogleAdsense($publisherId, $ads, $renderer);
+        $ga = new GoogleAdSense($publisherId, $ads, $renderer);
         $ga->setEnable($enable);
 
         foreach ($adsenseConfig['unit-limit'] as $type => $limit) {

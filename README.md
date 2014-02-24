@@ -1,4 +1,4 @@
-ZfSnapGoogleAdsense
+ZfSnapGoogleAdSense
 ===================
 
-Google Adsense view helper for Zend Framework 2
+Google AdSense view helper for Zend Framework 2

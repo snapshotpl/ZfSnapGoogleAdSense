@@ -1,6 +1,6 @@
 <?php
 
-namespace ZfSnapGoogleAdsense;
+namespace ZfSnapGoogleAdSense;
 
 /**
  * Exception

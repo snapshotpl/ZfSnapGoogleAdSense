@@ -1,6 +1,6 @@
 <?php
 
-use \ZfSnapGoogleAdsense\Model\AdUnit;
+use \ZfSnapGoogleAdSense\Model\AdUnit;
 
 return array(
     'zf-snap-google-adsense' => array(
@@ -25,15 +25,15 @@ return array(
     ),
     'service_manager' => array(
         'abstract_factories' => array(
-            'ZfSnapGoogleAdsense\View\Helper\Renderer\ViewFactory' => 'ZfSnapGoogleAdsense\View\Helper\Renderer\ViewFactory',
+            'ZfSnapGoogleAdSense\View\Helper\Renderer\ViewFactory' => 'ZfSnapGoogleAdSense\View\Helper\Renderer\ViewFactory',
         ),
     ),
     'view_helpers' => array(
         'aliases' => array(
-            'adsense' => 'googleAdsense',
+            'adsense' => 'googleAdSense',
         ),
         'factories' => array(
-            'googleAdsense' => 'ZfSnapGoogleAdsense\View\Helper\GoogleAdsenseFactory',
+            'googleAdSense' => 'ZfSnapGoogleAdSense\View\Helper\GoogleAdSenseFactory',
         ),
     ),
     'view_manager' => array(

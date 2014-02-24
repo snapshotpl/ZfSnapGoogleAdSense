@@ -1,6 +1,6 @@
 <?php
 
-namespace ZfSnapGoogleAdsense\View\Helper\Renderer;
+namespace ZfSnapGoogleAdSense\View\Helper\Renderer;
 
 use Zend\ServiceManager\AbstractFactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface as ServiceManager;

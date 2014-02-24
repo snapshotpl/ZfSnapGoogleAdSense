@@ -1,8 +1,8 @@
 <?php
 
-namespace ZfSnapGoogleAdsense\View\Helper\Renderer;
+namespace ZfSnapGoogleAdSense\View\Helper\Renderer;
 
-use ZfSnapGoogleAdsense\Model\AdUnit;
+use ZfSnapGoogleAdSense\Model\AdUnit;
 
 /**
  * @author Witold Wasiczko <witold@wasiczko.pl>
