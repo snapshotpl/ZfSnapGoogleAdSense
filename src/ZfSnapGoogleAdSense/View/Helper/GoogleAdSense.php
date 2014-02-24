@@ -117,7 +117,7 @@ class GoogleAdSense extends AbstractHelper
      */
     public function setEnable($enable)
     {
-        $this->enable = $enable;
+        $this->enable = (bool) $enable;
     }
 
     /**
