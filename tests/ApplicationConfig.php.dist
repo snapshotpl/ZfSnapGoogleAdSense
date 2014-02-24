@@ -1,0 +1,14 @@
+<?php
+
+define('ZF2_PATH', __DIR__ . '/../vendor/zendframework/zendframework/library');
+
+return array(
+    'modules' => array(
+        'ZfSnapGoogleAdSense',
+    ),
+    'module_listener_options' => array(
+        'config_glob_paths' => array(
+            'config/{,*.}tests.php',
+        ),
+    ),
+);
