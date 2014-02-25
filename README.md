@@ -1,4 +1,4 @@
-ZfSnapGoogleAdSense
+ZfSnapGoogleAdSense [![Build Status](https://travis-ci.org/snapshotpl/ZfSnapGoogleAdSense.png?branch=master)](https://travis-ci.org/snapshotpl/ZfSnapGoogleAdSense)
 ===================
 
 Google AdSense view helper for Zend Framework 2
