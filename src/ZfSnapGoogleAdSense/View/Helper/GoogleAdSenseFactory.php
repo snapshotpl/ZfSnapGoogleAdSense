@@ -13,8 +13,13 @@ use Zend\ServiceManager\ServiceLocatorInterface;
 class GoogleAdSenseFactory implements FactoryInterface
 {
 
+    /**
+     * @param \Zend\View\HelperPluginManager $sl
+     * @return GoogleAdSense
+     */
     public function createService(ServiceLocatorInterface $sl)
     {
+        /* @var $sm ServiceLocatorInterface */
         $sm = $sl->getServiceLocator();
         $config = $sm->get('config');
         $adsenseConfig = $config['zf-snap-google-adsense'];
@@ -32,7 +37,6 @@ class GoogleAdSenseFactory implements FactoryInterface
         foreach ($adsenseConfig['unit-limit'] as $type => $limit) {
             $ga->setUnitLimit($type, $limit);
         }
-
         return $ga;
     }
 

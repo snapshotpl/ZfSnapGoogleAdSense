@@ -15,14 +15,27 @@ class ViewFactory implements AbstractFactoryInterface
     const PREFIX = 'zf-snap-google-adsense-renderer-view-';
     const PREFIX_LENGTH = 37;
 
+    /**
+     * @param ServiceManager $sm
+     * @param string $name
+     * @param string $requestedName
+     * @return bool
+     */
     public function canCreateServiceWithName(ServiceManager $sm, $name, $requestedName)
     {
         return substr($requestedName, 0, self::PREFIX_LENGTH) === self::PREFIX;
     }
 
+    /**
+     * @param ServiceManager $sm
+     * @param string $name
+     * @param string $requestedName
+     * @return View
+     */
     public function createServiceWithName(ServiceManager $sm, $name, $requestedName)
     {
         $config = $sm->get('config');
+        /* @var $viewRenderer \Zend\View\Renderer\PhpRenderer */
         $viewRenderer = $sm->get('ViewRenderer');
         $template = $requestedName;
         $params = array();
