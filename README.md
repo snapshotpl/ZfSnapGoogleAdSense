@@ -1,11 +1,11 @@
-ZfSnapGoogleAdSense [![Build Status](https://travis-ci.org/snapshotpl/ZfSnapGoogleAdSense.png?branch=master)](https://travis-ci.org/snapshotpl/ZfSnapGoogleAdSense)
+ZfSnapGoogleAdSense [![Build Status](https://travis-ci.org/snapshotpl/ZfSnapGoogleAdSense.png?branch=1.0.0)](https://travis-ci.org/snapshotpl/ZfSnapGoogleAdSense) [![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/snapshotpl/ZfSnapGoogleAdSense/badges/quality-score.png?s=9f9e8109533cadafa60dc90839c8edae02f85802)](https://scrutinizer-ci.com/g/snapshotpl/ZfSnapGoogleAdSense/)
 ===================
 
 Google AdSense view helper for Zend Framework 2
 
-Module's helps manage yours AdSense units on page. Keep them all in one place and use renderers!
+Module helps to manage yours AdSense units on page. Keep them all in one place and use renderers!
 
-Simplest usage
+The simplest usage
 --------------
 Add ad unit (one or more) and publisher ID (you can [`find it here`](https://www.google.com/adsense/app#accountInformation)) to your config:
 
@@ -46,11 +46,11 @@ Via [`composer`](https://getcomposer.org/)
 Renderers
 --------
 
-You can use renderes (by implements `ZfSnapGoogleAdSense\View\Helper\Renderer\RendererInterface`) to render your ads. In default module provide simple view renderer with very useful views:
+You can use renderes (by implements `ZfSnapGoogleAdSense\View\Helper\Renderer\RendererInterface`) to render your ads. In default module provides simple view renderer with very useful views:
 * **asynchronous** (default): official asynchronous script,
 * **synchronous**: official synchronous script,
-* **placeholdit**: fake placeholer using [`placehold.it`](http://placehold.it/) service to generate image, perfect for dev or test eviroments, you can customize it, to details see to `config/module.config.php` and overwrite options,
-* **html**: generates html div, perfect for dev or test eviroments, you can customize it, to details see to `config/module.config.php` and overwrite options,
+* **placeholdit**: fake placeholer is using [`placehold.it`](http://placehold.it/) service to generate image, perfect for dev or test eviroments, you can customize it, to details see `config/module.config.php` and overwrite options,
+* **html**: generates html div, perfect for dev or test eviroments, you can customize it, to details see `config/module.config.php` and overwrite options,
 
 To add own view to view render create view (in view you can use `ad` property which it's instance of `\ZfSnapGoogleAdSense\Model\AdUnit` by default) add it to view_manager with prefix `zf-snap-google-adsense-renderer-view-*`:
 
@@ -74,7 +74,7 @@ return array(
 );
 ```
 
-If you wrote own renderer pass intance name from `service_manager`. You can also pass custom parameters into view. To see how it works look into `renderers` array in `config/module.config.php` and view renderers source.
+If you wrote your own renderer pass intance name from `service_manager`. You can also set custom parameters into view. To see how it works look into `renderers` array in `config/module.config.php` and view renderers source.
 
 Options
 -------
@@ -83,7 +83,7 @@ Options
 * **id** (required): Ad ID,
 * **size** (required): You can define size by string or array,
 * **type**: content and link. Content unit is default. You can use constats or strings,
-* **name**: It's use in custom renderes (placeholdit and html). In name is not define, ad gets name by key name,
+* **name**: It's used in custom renderes (placeholdit and html). If name is not defined, ad gets name by key name,
 
 ```php
 return array(
