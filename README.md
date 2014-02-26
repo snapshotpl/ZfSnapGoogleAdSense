@@ -34,7 +34,7 @@ In default adsense use asynchronous code. You can change it by using predefined 
 How to install?
 ---------------
 
-Via [`composer`](https://getcomposer.org/)
+Via [composer.json](https://getcomposer.org/)
 ```json
 {
   "require": {
