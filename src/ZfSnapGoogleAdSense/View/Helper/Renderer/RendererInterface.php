@@ -9,5 +9,8 @@ use ZfSnapGoogleAdSense\Model\AdUnit;
  */
 interface RendererInterface
 {
+    /**
+     * @return string
+     */
     public function render(AdUnit $ad);
 }

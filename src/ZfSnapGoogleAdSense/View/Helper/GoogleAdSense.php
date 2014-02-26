@@ -85,6 +85,7 @@ class GoogleAdSense extends AbstractHelper
     }
 
     /**
+     * @param string $type
      * @return int
      */
     public function getUnitDisplayed($type)
