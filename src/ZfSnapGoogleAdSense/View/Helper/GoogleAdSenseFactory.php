@@ -12,7 +12,6 @@ use Zend\ServiceManager\ServiceLocatorInterface;
  */
 class GoogleAdSenseFactory implements FactoryInterface
 {
-
     /**
      * @param \Zend\View\HelperPluginManager $sl
      * @return GoogleAdSense
@@ -39,5 +38,4 @@ class GoogleAdSenseFactory implements FactoryInterface
         }
         return $ga;
     }
-
 }

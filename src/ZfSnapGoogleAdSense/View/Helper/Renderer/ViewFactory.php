@@ -35,8 +35,8 @@ class ViewFactory implements AbstractFactoryInterface
     public function createServiceWithName(ServiceManager $sm, $name, $requestedName)
     {
         $config = $sm->get('config');
-        /* @var $viewRenderer \Zend\View\Renderer\PhpRenderer */
         $viewRenderer = $sm->get('ViewRenderer');
+        /* @var $viewRenderer \Zend\View\Renderer\PhpRenderer */
         $template = $requestedName;
         $params = array();
 
@@ -50,9 +50,6 @@ class ViewFactory implements AbstractFactoryInterface
                 $params = $data['params'];
             }
         }
-        $renderer = new View($viewRenderer, $template, $params);
-
-        return $renderer;
+        return new View($viewRenderer, $template, $params);
     }
-
 }
