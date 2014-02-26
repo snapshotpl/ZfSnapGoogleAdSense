@@ -7,7 +7,7 @@ Module helps to manage yours AdSense units on page. Keep them all in one place a
 
 The simplest usage
 --------------
-Add ad unit (one or more) and publisher ID (you can [`find it here`](https://www.google.com/adsense/app#accountInformation)) to your config:
+Add ad unit (one or more) and publisher ID (you can [find it here](https://www.google.com/adsense/app#accountInformation)) to your config:
 
 ```php
 return array(
@@ -49,7 +49,7 @@ Renderers
 You can use renderes (by implements `ZfSnapGoogleAdSense\View\Helper\Renderer\RendererInterface`) to render your ads. In default module provides simple view renderer with very useful views:
 * **asynchronous** (default): official asynchronous script,
 * **synchronous**: official synchronous script,
-* **placeholdit**: fake placeholer is using [`placehold.it`](http://placehold.it/) service to generate image, perfect for dev or test eviroments, you can customize it, to details see `config/module.config.php` and overwrite options,
+* **placeholdit**: fake placeholer is using [placehold.it](http://placehold.it/) service to generate image, perfect for dev or test eviroments, you can customize it, to details see `config/module.config.php` and overwrite options,
 * **html**: generates html div, perfect for dev or test eviroments, you can customize it, to details see `config/module.config.php` and overwrite options,
 
 To add own view to view render create view (in view you can use `ad` property which it's instance of `\ZfSnapGoogleAdSense\Model\AdUnit` by default) add it to view_manager with prefix `zf-snap-google-adsense-renderer-view-*`:
@@ -123,11 +123,11 @@ return array(
 );
 ```
 
-`publisher-id` (required) publisher ID - you can [`find it here`](https://www.google.com/adsense/app#accountInformation)
+`publisher-id` (required) publisher ID - you can [find it here](https://www.google.com/adsense/app#accountInformation)
 
 `unit-limit` limits ads on page. Default values:
-* 3 content units ([`more info`](https://support.google.com/adsense/answer/1346295#Google_ad_limit_per_page))
-* 3 link units ([`more info`](https://support.google.com/adsense/answer/1346295#Google_link_unit_limit_per_page))
+* 3 content units ([more info](https://support.google.com/adsense/answer/1346295#Google_ad_limit_per_page))
+* 3 link units ([more info](https://support.google.com/adsense/answer/1346295#Google_link_unit_limit_per_page))
 
 ```php
 return array(
